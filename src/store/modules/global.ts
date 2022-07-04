@@ -33,7 +33,7 @@ const usersSlice = createSlice({
   name: 'global',
   initialState,
   reducers: {
-    globalLoading(state, action: PayloadAction<boolean>) {
+    toggleGlobalLoading(state, action: PayloadAction<boolean>) {
       state.globalLoading = action.payload;
     },
   },
@@ -46,4 +46,4 @@ const usersSlice = createSlice({
 
 // export reducer & action creators
 export default usersSlice.reducer;
-export const { globalLoading } = usersSlice.actions;
+export const { toggleGlobalLoading } = usersSlice.actions;

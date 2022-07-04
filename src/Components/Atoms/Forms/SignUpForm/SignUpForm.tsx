@@ -1,13 +1,16 @@
 import { useRef, useEffect } from 'react';
 import StyledForm, { StyledButton } from './style';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { globalLoading } from '../../../../store/modules/global';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleGlobalLoading } from '../../../../store/modules/global';
 import { useRouter } from 'next/router';
+import { RootState } from '../../../../store/modules/rootReducer';
 
 function SignUpForm() {
   const router = useRouter();
   const dispatch = useDispatch();
+  const { globalLoading } = useSelector((state: RootState) => state.global);
+
   const idRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordConfirmRef = useRef<HTMLInputElement>(null);
@@ -60,6 +63,8 @@ function SignUpForm() {
   }
 
   async function signUpHandler() {
+    if (globalLoading) return;
+
     if (
       idRef.current !== null &&
       passwordRef.current !== null &&
@@ -67,14 +72,20 @@ function SignUpForm() {
     ) {
       const idInputValue = idRef.current.value;
       const passwordInputValue = passwordRef.current.value;
-      dispatch(globalLoading(true));
+
+      // blur all inputs
+      idRef.current.blur();
+      passwordRef.current.blur();
+      passwordConfirmRef.current.blur();
+
+      dispatch(toggleGlobalLoading(true));
       try {
         const { data } = await axios({
           method: 'POST',
           url: '/api/users',
           data: { id: idInputValue, password: passwordInputValue },
         });
-        dispatch(globalLoading(false));
+        dispatch(toggleGlobalLoading(false));
 
         switch (data.error) {
           case 'IDduplication':
