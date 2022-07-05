@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { createWrapper, HYDRATE } from 'next-redux-wrapper';
 import global from './global';
+import user from './user';
 
 // root reducer
 // this two type must be required!
@@ -14,7 +15,7 @@ const rootReducer = (state: any, action: any) => {
       return action.payload;
 
     default:
-      return combineReducers({ global })(state, action);
+      return combineReducers({ global, user })(state, action);
   }
 };
 

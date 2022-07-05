@@ -5,6 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleGlobalLoading } from '../../../../store/modules/global';
 import { useRouter } from 'next/router';
 import { RootState } from '../../../../store/modules/rootReducer';
+import {
+  checkEmptyInput,
+  checkTwoInputValueMatch,
+} from '../../../../utils/formCheck';
 
 function SignUpForm() {
   const router = useRouter();
@@ -15,52 +19,13 @@ function SignUpForm() {
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordConfirmRef = useRef<HTMLInputElement>(null);
 
+  const inputRefArray = [idRef, passwordRef, passwordConfirmRef];
+
   useEffect(() => {
     if (idRef.current !== null) {
       idRef.current.focus();
     }
   }, []);
-
-  function inputCheck() {
-    if (
-      idRef.current !== null &&
-      passwordRef.current !== null &&
-      passwordConfirmRef.current !== null
-    ) {
-      const refArray = [
-        idRef.current,
-        passwordRef.current,
-        passwordConfirmRef.current,
-      ];
-      let refIndex: number = -1;
-
-      try {
-        refArray.forEach((ref, index) => {
-          if (ref !== null) {
-            if (ref.value === '') {
-              refIndex = index;
-              throw new Error();
-            }
-          }
-        });
-      } catch (error) {}
-
-      if (refArray[refIndex] !== null && refIndex !== -1) {
-        refArray[refIndex].focus();
-        return false;
-      }
-
-      if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-        alert('パスワードが一致していません。');
-        passwordRef.current.value = '';
-        passwordConfirmRef.current.value = '';
-        passwordRef.current.focus();
-        return false;
-      }
-
-      return true;
-    }
-  }
 
   async function signUpHandler() {
     if (globalLoading) return;
@@ -114,8 +79,13 @@ function SignUpForm() {
       onSubmit={(e) => {
         e.preventDefault();
 
-        if (!inputCheck()) return;
+        // check empty inputs
+        if (!checkEmptyInput(inputRefArray)) return;
 
+        // check password confirm
+        if (!checkTwoInputValueMatch(passwordRef, passwordConfirmRef)) return;
+
+        // all check ok!
         signUpHandler();
       }}
     >

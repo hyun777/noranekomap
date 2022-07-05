@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../src/store/modules/rootReducer';
 import Index from '../src/Components/Templates/Index/Index';
 import GlobalLoading from '../src/Components/Atoms/Divs/GlobalLoading/GlobalLoading';
+import withAuth from '../src/HOC/withAuth';
 
 const Home: NextPage = () => {
   // const dispatch = useDispatch<AppDispatch>();
@@ -15,11 +16,11 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>野良猫マップ</title>
+        <title>中村区野良猫マップ</title>
       </Head>
       <Index />
     </div>
   );
 };
 
-export default Home;
+export default withAuth(Home, 'everybody');

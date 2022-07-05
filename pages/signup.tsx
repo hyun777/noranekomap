@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../src/store/modules/rootReducer';
 import SignUp from '../src/Components/Templates/SignUp/SignUp';
 import GlobalLoading from '../src/Components/Atoms/Divs/GlobalLoading/GlobalLoading';
+import withAuth from '../src/HOC/withAuth';
 
 const Home: NextPage = () => {
   const { globalLoading } = useSelector((state: RootState) => state.global);
@@ -11,7 +12,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>野良猫マップ</title>
+        <title>会員登録</title>
       </Head>
       <SignUp />
       {globalLoading && <GlobalLoading />}
@@ -19,4 +20,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default withAuth(Home, 'onlyNonMember');

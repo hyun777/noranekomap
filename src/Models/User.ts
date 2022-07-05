@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: 'A',
     },
+    refreshToken: {
+      type: String,
+      default: '',
+    },
   },
   schemaOptions
 );
