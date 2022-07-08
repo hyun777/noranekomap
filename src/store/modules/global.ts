@@ -21,11 +21,21 @@ export const fetchTest = createAsyncThunk(
 interface State {
   globalLoading: boolean;
   message: string;
+  selectedMarker: {
+    lat: string;
+    lng: string;
+    thumbnail: string;
+  };
 }
 
 const initialState: State = {
   globalLoading: false,
   message: '',
+  selectedMarker: {
+    lat: '',
+    lng: '',
+    thumbnail: '',
+  },
 };
 
 // create slice
@@ -35,6 +45,9 @@ const usersSlice = createSlice({
   reducers: {
     toggleGlobalLoading(state, action: PayloadAction<boolean>) {
       state.globalLoading = action.payload;
+    },
+    updateSelectedMarker(state, action: PayloadAction<any>) {
+      state.selectedMarker = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -46,4 +59,4 @@ const usersSlice = createSlice({
 
 // export reducer & action creators
 export default usersSlice.reducer;
-export const { toggleGlobalLoading } = usersSlice.actions;
+export const { toggleGlobalLoading, updateSelectedMarker } = usersSlice.actions;

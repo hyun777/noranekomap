@@ -1,6 +1,8 @@
 import { RefObject } from 'react';
 
-export function checkEmptyInput(refArray: RefObject<HTMLInputElement>[]) {
+export function checkEmptyInput(
+  refArray: RefObject<HTMLInputElement | HTMLTextAreaElement>[]
+) {
   const result = refArray.find((ref, index) => {
     return ref.current === null;
   });

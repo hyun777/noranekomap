@@ -12,7 +12,7 @@ function Logo() {
     <StyledDiv>
       <Image
         src='/images/logo.png'
-        alt='Picture of the author'
+        alt='logo'
         layout='fill'
         objectFit='contain'
         priority

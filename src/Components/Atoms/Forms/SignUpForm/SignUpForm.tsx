@@ -67,7 +67,7 @@ function SignUpForm() {
         alert('登録に成功しました!ログイン画面に戻ります。');
         router.push('/login');
       } catch (error) {
-        dispatch(globalLoading(false));
+        dispatch(toggleGlobalLoading(false));
 
         alert('登録に失敗しました。');
       }

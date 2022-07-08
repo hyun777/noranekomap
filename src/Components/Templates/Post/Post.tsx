@@ -1,19 +1,20 @@
-import StyledDiv, { theme } from './style';
-import { ThemeProvider } from 'styled-components';
 import Header from '../../Organisms/Header/Header';
-import Main from '../../Organisms/Main/Main';
+import StyledDiv from './style';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './style';
 import Footer from '../../Atoms/Footer/Footer';
+import PostWindow from '../../Molecules/PostWindow/PostWindow';
 
-function Index({ postData }: any) {
+function Post() {
   return (
     <ThemeProvider theme={theme}>
       <StyledDiv>
         <Header />
-        <Main postData={postData} />
+        <PostWindow />
         <Footer />
       </StyledDiv>
     </ThemeProvider>
   );
 }
 
-export default Index;
+export default Post;
