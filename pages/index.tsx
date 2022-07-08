@@ -35,7 +35,7 @@ const Home: NextPage = ({ data: { payload: postData } }: any) => {
 export async function getServerSideProps() {
   const { data } = await axios({
     method: 'GET',
-    url: `http://127.0.0.1:3000/api/posts`,
+    url: `${process.env.API_URL}/api/posts`,
   });
 
   return {

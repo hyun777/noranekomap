@@ -1,6 +1,6 @@
 # 中村区　野良猫　マップ(今、作ってます！)
 
-## https://noranekomap.vercel.app
+## https://noranekomap.vercel.app/
 
 ### (7/8 今のところ、投稿までは出来るようになりました！)
 
