@@ -20,4 +20,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default withAuth(Home, 'everybody');
+export default withAuth(Home, 'onlyMember');

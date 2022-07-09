@@ -25,6 +25,7 @@ interface State {
     lat: string;
     lng: string;
     thumbnail: string;
+    _id: string;
   };
 }
 
@@ -35,6 +36,7 @@ const initialState: State = {
     lat: '',
     lng: '',
     thumbnail: '',
+    _id: '',
   },
 };
 

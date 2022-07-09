@@ -22,6 +22,15 @@ const StyledWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.3);
   user-select: none;
   z-index: 999;
+
+  &[data-absolute='true'] {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+  }
 `;
 
 export const StyledLoading = styled.div`

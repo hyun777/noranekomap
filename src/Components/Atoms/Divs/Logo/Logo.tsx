@@ -6,6 +6,7 @@ function Logo() {
   const router = useRouter();
 
   function moveIndexPage() {
+    if (router.asPath === '/') return;
     router.push('/');
   }
   return (

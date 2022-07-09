@@ -1,8 +1,8 @@
 import StyledWrapper, { StyledLoading } from './style';
 
-function GlobalLoading() {
+function GlobalLoading({ absolute }: { absolute?: true }) {
   return (
-    <StyledWrapper>
+    <StyledWrapper data-absolute={absolute}>
       <StyledLoading></StyledLoading>
     </StyledWrapper>
   );

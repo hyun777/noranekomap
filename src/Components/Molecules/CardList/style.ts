@@ -9,6 +9,7 @@ const StyledCardList = styled.div`
   padding: 1rem 1rem;
   margin: 0 0 1.5rem 0;
   box-sizing: border-box;
+  position: relative;
 
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;

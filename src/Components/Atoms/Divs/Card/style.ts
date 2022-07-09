@@ -13,6 +13,11 @@ const StyledCard = styled.div`
     opacity: 0.8;
   }
 
+  &[data-selected='true'] {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 1rem;
+  }
+
   > div[data-class='left'] {
     grid-area: 1/1/2/2;
     position: relative;

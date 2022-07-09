@@ -11,6 +11,7 @@ function Title() {
   return (
     <StyledTitle
       onClick={() => {
+        if (router.asPath === '/') return;
         moveIndexPage();
       }}
     >

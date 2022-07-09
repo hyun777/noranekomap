@@ -9,18 +9,26 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     case 'GET':
       (async () => {
         try {
-          const result = await Post.find({ status: 'A' })
-            .select(
-              '_id userId catName gender characteristic address created_at thumbnail lat lng'
-            )
-            .sort({ created_at: -1 })
-            .limit(5)
-            .skip(0);
+          if (req.query !== undefined) {
+            const result = await Post.find({ status: 'A' })
+              .select(
+                '_id userId catName gender characteristic address created_at thumbnail lat lng'
+              )
+              .sort({ created_at: -1 })
+              .limit(5)
+              .skip(5 * Number(req.query.count));
 
-          return res.json({
-            success: true,
-            payload: result,
-          });
+            if (result.length === 0) {
+              return res.json({
+                success: false,
+              });
+            }
+
+            return res.json({
+              success: true,
+              payload: result,
+            });
+          }
         } catch (error) {
           return res.json({
             success: false,

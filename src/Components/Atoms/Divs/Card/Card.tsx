@@ -17,7 +17,7 @@ interface card {
 
 function Card({
   date,
-  thumbnail = '/images/logo.png',
+  thumbnail,
   catName,
   address,
   gender,
@@ -26,6 +26,7 @@ function Card({
 }: card) {
   const dispatch = useDispatch();
   const { postInfo } = useSelector((state: RootState) => state.post);
+  const { selectedMarker } = useSelector((state: RootState) => state.global);
 
   let genderString;
 
@@ -48,12 +49,13 @@ function Card({
   return (
     <StyledCard
       onClick={(e) => {
-        const { thumbnail, lat, lng } = postInfo.find((item: any) => {
+        const { thumbnail, lat, lng, _id } = postInfo.find((item: any) => {
           return item._id === e.currentTarget.dataset.id;
         });
-        dispatch(updateSelectedMarker({ thumbnail, lat, lng }));
+        dispatch(updateSelectedMarker({ thumbnail, lat, lng, _id }));
       }}
       data-id={_id}
+      data-selected={selectedMarker._id === _id ? true : false}
     >
       <div data-class='left'>
         <Image src={thumbnail} alt='logo' layout='fill' priority />

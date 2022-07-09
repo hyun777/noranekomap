@@ -11,7 +11,9 @@ function SignOutButton() {
     dispatch(updateUserInfo({}));
     window.localStorage.removeItem('accessToken');
     window.localStorage.removeItem('refreshToken');
-    if (router.asPath !== '/') router.push('/');
+    if (router.asPath !== '/') {
+      router.push('/');
+    }
   }
 
   return (
