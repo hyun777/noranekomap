@@ -1,13 +1,10 @@
 import Head from 'next/head';
 import Detail from '../../src/Components/Templates/Detail/Detail';
 import withAuth from '../../src/HOC/withAuth';
-import { useRouter } from 'next/router';
 import type { NextPage } from 'next';
 import axios from 'axios';
 
 const page: NextPage = ({ data }: any) => {
-  const router = useRouter();
-  const { id } = router.query;
   return (
     <div>
       <Head>
