@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { updateSelectedMarker } from '../../../../store/modules/global';
 import { RootState } from '../../../../store/modules/rootReducer';
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,6 +25,7 @@ function Card({
   userId,
   _id,
 }: card) {
+  const router = useRouter();
   const dispatch = useDispatch();
   const { postInfo } = useSelector((state: RootState) => state.post);
   const { selectedMarker } = useSelector((state: RootState) => state.global);
@@ -46,6 +48,11 @@ function Card({
     default:
       break;
   }
+
+  function moveToDetailPage() {
+    router.push(`/post/${_id}`);
+  }
+
   return (
     <StyledCard
       onClick={(e) => {
@@ -67,6 +74,15 @@ function Card({
         <p>投稿者 / {userId}</p>
         <p style={{ fontWeight: 'bolder' }}>名前 / {catName}</p>
         <p>性別 / {genderString}</p>
+        <div
+          data-class='right__detail'
+          onClick={() => {
+            moveToDetailPage();
+          }}
+          title='詳細ページへ'
+        >
+          <p>詳細</p>
+        </div>
       </div>
     </StyledCard>
   );

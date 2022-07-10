@@ -2,7 +2,7 @@
 
 ## https://noranekomap.vercel.app/
 
-### (7/9 今のところ、HOC を整えました)
+### (7/10 今のところ、詳細ページを作っています！)
 
 - 特徴
   - nextJS を利用した SSG、SSR

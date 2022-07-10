@@ -34,6 +34,32 @@ const StyledCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    position: relative;
+
+    > div[data-class='right__detail'] {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-top: 2.5rem solid transparent;
+      border-bottom: 2.5rem solid black;
+      border-left: 2.5rem solid transparent;
+      border-right: 2.5rem solid black;
+      border-bottom-right-radius: 1rem;
+      color: white;
+
+      &:hover {
+        border-bottom: 2.5rem solid green;
+        border-right: 2.5rem solid green;
+      }
+
+      > p {
+        position: absolute;
+        top: 0.5rem;
+        width: 3rem;
+      }
+    }
   }
 `;
 
