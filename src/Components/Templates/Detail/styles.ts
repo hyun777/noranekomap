@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
   height: 100vh;
   margin: 0 auto;
   display: grid;
-  grid-template: 70px 1fr 30px/ 1fr;
+  grid-template: 70px calc(100vh - 100px) 30px/ 1fr;
 `;
 
 export default StyledDiv;

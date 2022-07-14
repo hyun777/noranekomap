@@ -70,7 +70,7 @@ function Card({
 
       <div data-class='right'>
         <p>{address}</p>
-        <p>{new Date(date).toLocaleString()}</p>
+        <p>{new Date(date).toLocaleString('ja')}</p>
         <p>投稿者 / {userId}</p>
         <p style={{ fontWeight: 'bolder' }}>名前 / {catName}</p>
         <p>性別 / {genderString}</p>

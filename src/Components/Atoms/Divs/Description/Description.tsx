@@ -2,8 +2,6 @@ import StyledDiv from './style';
 import Image from 'next/image';
 
 function Description({ data }: any) {
-  console.log(data);
-
   let genderString;
 
   switch (data.gender) {

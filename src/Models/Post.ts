@@ -54,13 +54,13 @@ const postSchema = new mongoose.Schema(
           {
             userId: {
               type: String,
-              maxlength: 50,
-              required: true,
             },
-            message: {
+            comment: {
               type: String,
-              maxlength: 500,
-              required: true,
+            },
+            status: {
+              type: String,
+              default: 'A',
             },
           },
           schemaOptions

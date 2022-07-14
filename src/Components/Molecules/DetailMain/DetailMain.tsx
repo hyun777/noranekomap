@@ -6,7 +6,7 @@ function DetailMain({ data }: any) {
   return (
     <StyledDiv>
       <Description data={data} />
-      <Comment />
+      <Comment data={data} />
     </StyledDiv>
   );
 }
