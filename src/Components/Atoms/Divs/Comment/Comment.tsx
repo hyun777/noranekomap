@@ -90,7 +90,7 @@ function Comment({ data: { comments } }: any) {
 
         <button disabled={userId ? false : true}>入力</button>
       </form>
-      <GlobalLoading data-class='comments' />
+      {/* <GlobalLoading data-class='comments' /> */}
     </StyledDiv>
   );
 }
