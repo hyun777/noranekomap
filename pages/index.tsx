@@ -5,7 +5,6 @@ import Head from 'next/head';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../src/store/modules/rootReducer';
 import Index from '../src/Components/Templates/Index/Index';
-import GlobalLoading from '../src/Components/Atoms/Divs/GlobalLoading/GlobalLoading';
 import withAuth from '../src/HOC/withAuth';
 import axios from 'axios';
 import { updatePostInfo } from '../src/store/modules/post';

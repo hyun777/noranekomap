@@ -31,10 +31,6 @@ const StyledWrapper = styled.div`
     height: 100%;
     background-color: transparent;
   }
-
-  &[data-class='comments'] {
-    background-color: red;
-  }
 `;
 
 export const StyledLoading = styled.div`

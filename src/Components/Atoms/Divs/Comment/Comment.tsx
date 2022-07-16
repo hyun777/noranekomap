@@ -12,6 +12,8 @@ function Comment({ data: { comments } }: any) {
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [newComments, setNewComments] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   useEffect(() => {
     if (containerRef.current !== null) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
@@ -19,8 +21,16 @@ function Comment({ data: { comments } }: any) {
   }, [newComments]);
 
   async function submitComment() {
+    if (isLoading) return;
+
     if (inputRef.current !== null) {
       const inputValue = inputRef.current.value;
+
+      // check empty value
+      if (inputValue === '') return;
+
+      setIsLoading(true);
+
       const { id } = router.query;
       const {
         data: { success, payload },
@@ -32,6 +42,9 @@ function Comment({ data: { comments } }: any) {
           comment: inputValue,
         },
       });
+
+      setIsLoading(false);
+
       if (!success) return alert('コメント作成に失敗しました。');
 
       inputRef.current.value = '';
@@ -90,7 +103,7 @@ function Comment({ data: { comments } }: any) {
 
         <button disabled={userId ? false : true}>入力</button>
       </form>
-      {/* <GlobalLoading data-class='comments' /> */}
+      {isLoading && <GlobalLoading absolute={true} />}
     </StyledDiv>
   );
 }

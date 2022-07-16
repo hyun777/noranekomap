@@ -11,6 +11,7 @@ const StyledDiv = styled.div`
   overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
+  position: relative;
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
