@@ -26,7 +26,7 @@ const StyledWrapper = styled.div`
   &[data-absolute='true'] {
     top: 0;
     left: 0;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background-color: transparent;

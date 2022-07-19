@@ -89,6 +89,7 @@ const StyledDiv = styled.div`
       border-bottom-right-radius: 1rem;
       cursor: pointer;
       font-size: 1.1rem;
+
       &:hover {
         opacity: 0.8;
       }
